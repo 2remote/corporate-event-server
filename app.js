@@ -8,7 +8,7 @@ var fs = require('fs');
 var app = express();
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-app.use('/', express.static(__dirname + '/www'));
+app.use('/', express.static(__dirname + '/public'));
 
 // homepage by event name
 app.get('/:event_name', function(req, res){
