@@ -4,6 +4,7 @@ var request = require('request');
 var async = require('async');
 var ejs = require('ejs');
 var fs = require('fs');
+var conf = require('./cfg');
 
 var app = express();
 app.set('views', __dirname + '/views');
@@ -38,7 +39,7 @@ app.get('/:event_name', function(req, res){
   res.render('event', {title: event_name, photos: photos});
 });
 
-var port = 8080;
+var port = conf('PORT');
 app.listen(port);
 console.log('Server running at http://127.0.0.1:%s.', port);
 
