@@ -39,6 +39,7 @@ qiniu.conf.ACCESS_KEY = conf('ACCESS_KEY');
 qiniu.conf.SECRET_KEY = conf('SECRET_KEY');
 
 var client = new qiniu.rs.Client();
+var listPhotos= qiniu.rsf.listPrefix;
 
 // homepage by event name
 app.get('/:event_name', function(req, res){
@@ -52,6 +53,17 @@ app.get('/qiniu/:bucket/:event/:filename', function(req, res){
 	var filename = req.params.filename;
   var key = event + "/" + filename;
 	client.stat(bucket, key, function(err, ret) {
+		if (err) {
+      console.error(err);
+    };
+		res.json(ret);
+	});
+});
+
+app.get('/qiniu/:bucket/:event', function(req, res){
+	var bucket = req.params.bucket;
+	var event_name = req.params.event;
+	listPhotos(bucket, event_name, false, 10, false,  function(err, ret) {
 		if (err) {
       console.error(err);
     };
