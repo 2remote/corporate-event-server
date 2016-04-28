@@ -25,9 +25,24 @@
     <!-- 加入每个内容的点击响应 -->
     <script>
       var gallery = blueimp.Gallery([
-        'images/mushroom.jpg',
-        'images/nuddles.jpg',
-        'images/rice.jpg',
+        {
+          title: 'mushroom',
+          href:'images/mushroom.jpg',
+          type:'image/jpeg',
+          thumbnail:'images/thumbnail/mushroom.jpg',
+        },
+        {
+          title: 'rice',
+          href:'images/rice.jpg',
+          type:'image/jpeg',
+          thumbnail:'images/thumbnail/rice.jpg',
+        },
+        {
+          title: 'nuddles',
+          href:'images/nuddles.jpg',
+          type:'image/jpeg',
+          thumbnail:'images/thumbnail/nuddles.jpg',
+        },
       ]);
     </script>
 
