@@ -40,6 +40,7 @@ qiniu.conf.SECRET_KEY = conf('SECRET_KEY');
 
 var client = new qiniu.rs.Client();
 var listPhotos= qiniu.rsf.listPrefix;
+var corporatePreLink = 'http://7xtehn.com2.z0.glb.qiniucdn.com/';
 
 // homepage by event name
 app.get('/:event_name', function(req, res){
@@ -67,7 +68,11 @@ app.get('/qiniu/:bucket/:event', function(req, res){
 		if (err) {
       console.error(err);
     };
-		res.json(ret);
+    var images = [];
+    ret.items.forEach(function(img){
+      images.push(covertImageInfo(img.key, img.hash, img.mimType, img.putTime));
+    });
+    res.render('event', {title: event_name, photos: images});
 	});
 });
 
@@ -79,3 +84,12 @@ console.log('Server running at http://127.0.0.1:%s.', port);
 // Functions
 //
 
+function covertImageInfo(key, hash, mimType, putTime){
+  var bigImage = corporatePreLink + key;
+  return { 
+    bigImage: bigImage, 
+    title: key, 
+    thumbnail: bigImage, 
+    alt: key, 
+  };
+};
