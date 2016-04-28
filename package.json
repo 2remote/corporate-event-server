@@ -1,0 +1,36 @@
+{
+  "name": "corporate-event-server",
+  "version": "1.0.0",
+  "description": "YAOPAI企业活动服务器",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2remote/corporate-event-server.git"
+  },
+  "keywords": [
+    "file"
+  ],
+  "author": "Hu Songtao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/2remote/corporate-event-server/issues"
+  },
+  "homepage": "https://github.com/2remote/corporate-event-server#readme",
+  "dependencies": {
+    "async": "^2.0.0-rc.3",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "request": "^2.71.0",
+    "tape": "^4.5.1"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-tape": "0.0.2"
+  }
+}
