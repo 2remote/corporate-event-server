@@ -19,30 +19,18 @@
     </div>
 
     <!-- 加入内容 -->
-    <div id="links">
-      <a href="images/rice.jpg" title="rice">
-          <img src="images/thumbnails/rice.jpg" alt="rice">
-      </a>
-      <a href="images/mushroom.jpg" title="mushroom">
-          <img src="images/thumbnails/mushroom.jpg" alt="mushroom">
-      </a>
-      <a href="images/nuddles.jpg" title="nuddles">
-          <img src="images/thumbnails/nuddles.jpg" alt="nuddles">
-      </a>
-    </div>
+    
+    <script src="js/blueimp-gallery.min.js"></script>
 
     <!-- 加入每个内容的点击响应 -->
     <script>
-      document.getElementById('links').onclick = function (event) {
-          event = event || window.event;
-          var target = event.target || event.srcElement,
-              link = target.src ? target.parentNode : target,
-              options = {index: link, event: event},
-              links = this.getElementsByTagName('a');
-          blueimp.Gallery(links, options);
-      };
+      var gallery = blueimp.Gallery([
+        'images/mushroom.jpg',
+        'images/nuddles.jpg',
+        'images/rice.jpg',
+      ]);
     </script>
 
-    </div><script src="js/blueimp-gallery.min.js"></script>
+    
   </body>
 </html>
