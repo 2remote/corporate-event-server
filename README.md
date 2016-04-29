@@ -2,5 +2,8 @@
 为YAOPAI生成企业活动的图片浏览
 
 ## 配置
-1. 根目录下创建development.json文件，放入端口号和AccessKey/SecretKey。
-2. 访问文件详情 curl http://localhost:8080/qiniu/businesssync/livepictest426/4.jpg
+1. 测试时，根目录下创建development.json文件，放入端口号和AccessKey/SecretKey。
+1. 发布时，在发布环境下放入相关环境变量。
+
+## 使用
+1. 访问活动名称 http://localhost:8080/livepictest4262 会返回所有图片
