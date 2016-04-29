@@ -44,7 +44,6 @@ console.log('Server running at http://127.0.0.1:%s.', port);
 
 
 // Functions
-//
 
 function covertImageInfo(key, hash, mimType, putTime){
   var org = corporatePreLink + key;
