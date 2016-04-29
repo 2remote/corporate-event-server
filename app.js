@@ -24,7 +24,7 @@ var bucket = 'businesssync';
 // get gallery by event name
 app.get('/:event', function(req, res){
 	var event_name = req.params.event;
-	listPhotos(bucket, event_name, false, 10, false,  function(err, ret) {
+	listPhotos(bucket, event_name, false, false, false,  function(err, ret) {
     var images = [];
 		if (err) {
      console.error('[ERROR]', err);
