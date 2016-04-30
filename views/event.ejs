@@ -4,9 +4,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="stylesheet" href="css/blueimp-gallery.min.css">
     <title><%= title %></title>
+    <style>
+    body {
+      font-family: "PingFang SC", "Microsoft Yahei", Arial, sans-serif;
+      background: #222;
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #links {
+      width: 100%;
+      height: auto;
+      margin: auto;
+      text-align: center;
+    }
+
+    #links a img {
+      width: 20%;
+      border : 1px #fff solid;
+    }
+
+    #links a:last-child {
+      text-align: left;
+    }
+
+    @media screen and (max-width: 768px) {
+      #links a img {
+        width: 30%;
+      }
+    }
+
+    </style>
   </head>
   <body>
     <h1><%= title %></h1>
+    <small>点击图片可看大图</small>
     <!-- 加入控制 -->
     <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
       <div class="slides"></div>
@@ -26,7 +62,7 @@
         </a>
       <% } %>
     </div>
-    
+
     <script src="js/blueimp-gallery.min.js"></script>
 
     <!-- 加入每个内容的点击响应 -->
@@ -40,7 +76,5 @@
         blueimp.Gallery(links, options);
       };
     </script>
-
-    
   </body>
 </html>
