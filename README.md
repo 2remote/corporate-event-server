@@ -6,7 +6,7 @@
 
 ```
   {
-    "PORT": 3000,
+    "PORT": 8080,
     "ACCESS_KEY": "asdfeoifjsoadfjoeifewf",
     "SECRET_KEY": "asdfeoifjsoadfjoeifewf"
   }
