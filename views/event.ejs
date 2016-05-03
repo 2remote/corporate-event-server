@@ -1,80 +1,182 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link rel="stylesheet" href="css/blueimp-gallery.min.css">
-    <title><%= title %></title>
-    <style>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="css/blueimp-gallery.min.css">
+  <title>
+    <%= title %>
+  </title>
+  <style>
     body {
       font-family: "PingFang SC", "Microsoft Yahei", Arial, sans-serif;
       background: #222;
       color: #fff;
-      text-align: center;
     }
 
-    h1 {
+    h1.h1 {
       text-align: center;
+      font-size: 20px;
+      padding: 0;
+      margin: 10px 0;
     }
+
+    small.small {
+      text-align: center;
+      display: block;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    #blueimp-gallery .play-pause {
+      right: 25px;
+      bottom: 40px;
+    }
+    /*.play-pause-text {
+      position: absolute;
+      right: 15px;
+      bottom: 25px;
+      width: 30px;
+      height: 15px;
+      cursor: pointer;
+      font-size: 8px;
+    }*/
 
     #links {
-      width: 100%;
+      width: 1000px;
+      margin: 0 auto;
       height: auto;
-      margin: auto;
       text-align: center;
     }
 
     #links a img {
       width: 20%;
-      border : 1px #fff solid;
-    }
-
-    #links a:last-child {
-      text-align: left;
+      border: 1px #fff solid;
     }
 
     @media screen and (max-width: 768px) {
+      #links {
+        width: 100%;
+      }
       #links a img {
         width: 30%;
       }
     }
 
-    </style>
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <small>点击图片可看大图</small>
-    <!-- 加入控制 -->
-    <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
-      <div class="slides"></div>
-        <h3 class="title"></h3>
-        <a class="prev">‹</a>
-        <a class="next">›</a>
-        <a class="close">×</a>
-        <a class="play-pause"></a>
-        <ol class="indicator"></ol>
-    </div>
+    .footer {
+      height: 80px;
+      width: 100%;
+      background-color: #FFF;
+      border: 1px;
+      position: fixed;
+      bottom: 0;
+      color: #000;
+      opacity: 0.8;
+      padding: 5px;
+      font-weight: bold;
+      font-size: 14px;
+    }
 
-    <!-- 加入内容 -->
-    <div id="links">
-      <% for(var i=0; i<photos.length; i++) {%>
-        <a href="<%= photos[i].bigImage %>" title="<%= photos[i].title %>">
+    .footer .x {
+      right: 45px;
+      margin: -15px;
+      font-size: 30px;
+      text-decoration: none;
+      cursor: pointer;
+      position: absolute;
+      margin: 0 0px 0 0;
+      font-size: 20px;
+      line-height: 30px;
+      color: #fff;
+      text-shadow: 0 0 2px #000;
+      opacity: 0.8;
+      color: #000;
+      top: 0px;
+      z-index: 1000;
+    }
+
+    .footer .ewm {
+      height: 80px;
+      display: inline-block;
+      position: absolute;
+      border: 0;
+      vertical-align: middle;
+    }
+
+    .footer .text {
+      display: inline-block;
+      margin-left: 84px;
+      margin-top: 8px;
+    }
+
+    .footer .revserse {
+      background-color: #000;
+      color: #FFF;
+      font-size: 16px;
+    }
+
+    .tips {
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="h1">2016 北京草莓音乐节高清大图实时直播</h1>
+  <small class=small>点击图片可看大图</small>
+  <footer class="footer" id="footer">
+    <div class="x" id="closeFooter">×</div>
+    <img class="ewm J_QrCode" src="http://7xte7j.com2.z0.glb.clouddn.com/yp_weixin.jpg">
+    <span class="text">
+      <span class="revserse J_FooterText2">YAOPAI 全球摄影师预约平台</span>
+    <br>
+    <span class="J_FooterText">回复"2016草莓音乐节"，立即查看照片。</span>
+    <br>
+    <span class="tips">照片经过压缩处理，请放心浏览。</span>
+    </span>
+  </footer>
+
+  <!-- 加入控制 -->
+  <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <!-- <a class="play-pause-text">自动播放</a> -->
+    <!-- <ol class="indicator"></ol> -->
+  </div>
+
+  <!-- 加入内容 -->
+  <div id="links">
+    <% for(var i=0; i<photos.length; i++) {%>
+      <a href="<%= photos[i].bigImage %>" title="<%= photos[i].title %>">
             <img src="<%= photos[i].thumbnail %>" alt="<%= photos[i].alt %>">
         </a>
       <% } %>
-    </div>
+  </div>
 
-    <script src="js/blueimp-gallery.min.js"></script>
+  <script src="js/blueimp-gallery.min.js"></script>
 
-    <!-- 加入每个内容的点击响应 -->
-    <script>
-      document.getElementById('links').onclick = function (event) {
-        event = event || window.event;
-        var target = event.target || event.srcElement,
-            link = target.src ? target.parentNode : target,
-            options = {index: link, event: event},
-            links = this.getElementsByTagName('a');
-        blueimp.Gallery(links, options);
-      };
-    </script>
-  </body>
+  <!-- 加入每个内容的点击响应 -->
+  <script>
+    document.getElementById('links').onclick = function(event) {
+      event = event || window.event;
+      var target = event.target || event.srcElement,
+        link = target.src ? target.parentNode : target,
+        options = {
+          index: link,
+          event: event
+        },
+        links = this.getElementsByTagName('a');
+      blueimp.Gallery(links, options);
+    };
+
+    document.getElementById('closeFooter').onclick = function() {
+      document.getElementById('footer').style.display = 'none';
+    }
+  </script>
+</body>
+
 </html>
