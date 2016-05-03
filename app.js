@@ -19,7 +19,7 @@ qiniu.conf.SECRET_KEY = conf('SECRET_KEY');
 var client = new qiniu.rs.Client();
 var listPhotos= qiniu.rsf.listPrefix;
 var corporatePreLink = 'http://7xtehn.com2.z0.glb.qiniucdn.com/';
-var bucket = 'businesssync';
+var bucket = conf('BUCKET');
 
 // get gallery by event name
 app.get('/:event', function(req, res){
