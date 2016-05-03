@@ -24,6 +24,9 @@ var bucket = conf('BUCKET');
 // get gallery by event name
 app.get('/:event', function(req, res){
 	var event_name = req.params.event;
+	var event_title = {
+		strawberry: '2016 北京草莓音乐节高清大图实时直播',
+	};
 	listPhotos(bucket, event_name, false, false, false,  function(err, ret) {
     var images = [];
 		if (err) {
@@ -33,7 +36,7 @@ app.get('/:event', function(req, res){
       ret.items.forEach(function(img){
         images.push(covertImageInfo(img.key, img.hash, img.mimType, img.putTime));
         });
-      res.render('event', {title: event_name, photos: images});
+      res.render('event', {title: event_title.strawberry, photos: images});
     }
 	});
 });
@@ -50,10 +53,10 @@ function covertImageInfo(key, hash, mimType, putTime){
   var bigImage = org + '?imageMogr2/thumbnail/1024x';
   var thumbnail = org + '?imageMogr2/thumbnail/300x';
   var title = key.split('/')[1];
-  return { 
-    bigImage: bigImage, 
-    title: title, 
-    thumbnail: thumbnail, 
-    alt: key, 
+  return {
+    bigImage: bigImage,
+    title: title,
+    thumbnail: thumbnail,
+    alt: key,
   };
 };
