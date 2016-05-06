@@ -54,11 +54,14 @@ app.get('/:event', function(req, res){
       console.log('found events failed');
     });
 
-	var event_title = {
-		strawberry: '2016 北京草莓音乐节高清大图实时直播',
-	};
+	var event_title = '北京邀拍企业活动页'; 
   
   // get title from folderName
+  eventDescriptions.forEach(function(eventDescription){
+    if ( eventDescription.folderName == event_name){
+      event_title = eventDescription.title;
+    }  
+  });
 
 
 	listPhotos(bucket, event_name, false, false, false,  function(err, ret) {
@@ -70,7 +73,7 @@ app.get('/:event', function(req, res){
       ret.items.forEach(function(img){
         images.push(covertImageInfo(img.key, img.hash, img.mimType, img.putTime));
         });
-      res.render('event', {title: event_title.strawberry, photos: images});
+      res.render('event', {title: event_title, photos: images});
     }
 	});
 });

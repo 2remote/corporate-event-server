@@ -8,7 +8,7 @@ var ret = AV.initialize('3mY5tYSIAawgeVjJ9BIrbloU-gzGzoHsz', 'Tq9uT7sbzoByfjNVSf
 test('leanCloud test', function(t) {
   t.ok(AV);
 
-  // insert an event
+  // search an event
   var Event = AV.Object.extend('Event');
   var eventQuery= new AV.Query(Event);
   
