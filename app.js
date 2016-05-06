@@ -59,4 +59,4 @@ function covertImageInfo(key, hash, mimType, putTime){
     thumbnail: thumbnail,
     alt: key,
   };
-};
+}
