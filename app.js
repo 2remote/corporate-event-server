@@ -6,6 +6,7 @@ var ejs = require('ejs');
 var fs = require('fs');
 var conf = require('./cfg');
 var qiniu = require('qiniu');
+var AV = require('avoscloud-sdk');
 
 var app = express();
 app.set('views', __dirname + '/views');
@@ -16,6 +17,9 @@ app.use('/', express.static(__dirname + '/public'));
 qiniu.conf.ACCESS_KEY = conf('ACCESS_KEY');
 qiniu.conf.SECRET_KEY = conf('SECRET_KEY');
 
+// set leanCloud
+AV.initialize(LEANCLOUD_APP_ID, LEANCLOUD_APP_KEY);
+
 var client = new qiniu.rs.Client();
 var listPhotos= qiniu.rsf.listPrefix;
 var corporatePreLink = "http://" + conf('PRE_URL') + "/";
@@ -24,9 +28,39 @@ var bucket = conf('BUCKET');
 // get gallery by event name
 app.get('/:event', function(req, res){
 	var event_name = req.params.event;
+
+  // search an event
+  var Event = AV.Object.extend('Event');
+  var eventQuery= new AV.Query(Event);
+  eventQuery.select('folderName', 'title');
+  var eventDescriptions = [];
+
+  // update folder name and title
+  eventQuery.find().then(
+    function(results) {
+      if(results.length > 0 ){
+        console.log('found events');
+        results.forEach(function(result){
+          if(result._hasData){
+            // update eventDescriptions 
+            eventDescriptions.push(result);
+          }
+        });
+      }else{
+        console.log('server no results');
+      }
+    }, function(error) {
+      // 失败
+      console.log('found events failed');
+    });
+
 	var event_title = {
 		strawberry: '2016 北京草莓音乐节高清大图实时直播',
 	};
+  
+  // get title from folderName
+
+
 	listPhotos(bucket, event_name, false, false, false,  function(err, ret) {
     var images = [];
 		if (err) {
@@ -60,3 +94,5 @@ function covertImageInfo(key, hash, mimType, putTime){
     alt: key,
   };
 }
+
+
