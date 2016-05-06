@@ -7,6 +7,7 @@ var fs = require('fs');
 var conf = require('./cfg');
 var qiniu = require('qiniu');
 var AV = require('avoscloud-sdk');
+var async = require('async');
 
 var app = express();
 app.set('views', __dirname + '/views');
@@ -18,7 +19,11 @@ qiniu.conf.ACCESS_KEY = conf('ACCESS_KEY');
 qiniu.conf.SECRET_KEY = conf('SECRET_KEY');
 
 // set leanCloud
-AV.initialize(LEANCLOUD_APP_ID, LEANCLOUD_APP_KEY);
+AV.initialize(conf('LEANCLOUD_APP_ID'), conf('LEANCLOUD_APP_KEY'));
+var defaultEventDescription= {
+  folderName: 'default',
+  title: '北京邀拍企业活动页',
+}; 
 
 var client = new qiniu.rs.Client();
 var listPhotos= qiniu.rsf.listPrefix;
@@ -29,53 +34,14 @@ var bucket = conf('BUCKET');
 app.get('/:event', function(req, res){
 	var event_name = req.params.event;
 
-  // search an event
-  var Event = AV.Object.extend('Event');
-  var eventQuery= new AV.Query(Event);
-  eventQuery.select('folderName', 'title');
-  var eventDescriptions = [];
+  var folderName = event_name;
 
-  // update folder name and title
-  eventQuery.find().then(
-    function(results) {
-      if(results.length > 0 ){
-        console.log('found events');
-        results.forEach(function(result){
-          if(result._hasData){
-            // update eventDescriptions 
-            eventDescriptions.push(result);
-          }
-        });
-      }else{
-        console.log('server no results');
-      }
-    }, function(error) {
-      // 失败
-      console.log('found events failed');
-    });
-
-	var event_title = '北京邀拍企业活动页'; 
-  
-  // get title from folderName
-  eventDescriptions.forEach(function(eventDescription){
-    if ( eventDescription.folderName == event_name){
-      event_title = eventDescription.title;
-    }  
-  });
-
-
-	listPhotos(bucket, event_name, false, false, false,  function(err, ret) {
-    var images = [];
-		if (err) {
-     console.error('[ERROR]', err);
-    }else{
-      console.log('ret', ret);
-      ret.items.forEach(function(img){
-        images.push(covertImageInfo(img.key, img.hash, img.mimType, img.putTime));
-        });
-      res.render('event', {title: event_title, photos: images});
-    }
-	});
+  async.waterfall([
+    async.apply(loadEventDescriptions),               // ( -- eventDescripts )
+    async.apply(getTitleByFolderName,folderName),     // ( folderName, eventDescriptions -- eventDescription )
+    async.apply(getImageAndRenderHtml, folderName ),  // ( folderName, eventDescription -- 'eventDescription )
+    async.apply(renderToHtml, res)                  // ( tempName, eventDescription -- render html )
+  ]);
 });
 
 var port = conf('PORT');
@@ -98,4 +64,78 @@ function covertImageInfo(key, hash, mimType, putTime){
   };
 }
 
+function loadEventDescriptions(callback){
+  console.log('------------------------------------');
+  console.log('Step 1: update folder name and title');
+  console.log('------------------------------------');
+  // search an event
+  var Event = AV.Object.extend('Event');
+  var eventQuery= new AV.Query(Event);
+  eventQuery.select('folderName', 'title');
+  var eventDescriptions = [];
 
+  eventQuery.find().then(
+    function(results) {
+      if(results.length > 0 ){
+        console.log('found events');
+        results.forEach(function(result){
+          if(result._hasData){
+            // update eventDescriptions 
+            eventDescriptions.push(result._serverData);
+          }
+        });
+      }else{
+        console.log('server no results');
+      }
+      callback(null, eventDescriptions);
+    }, function(error) {
+      // 失败
+      console.log('found events failed');
+    });
+}
+
+function getTitleByFolderName(folderName, eventDescriptions, callback){
+  console.log('---------------------------------');
+  console.log('Step 2: get title from folderName');
+  console.log('---------------------------------');
+  console.log('getTitleByFolderName:eventDescriptions', eventDescriptions);
+  var currentEventDescription = false ;
+  eventDescriptions.forEach(function(eventDescription){
+    if ( eventDescription.folderName == folderName){
+      currentEventDescription = eventDescription;
+    } 
+  });
+  if( currentEventDescription ){
+    callback(null, currentEventDescription);
+  }else{
+    callback(null, defaultEventDescription);
+  }
+}
+
+function getImageAndRenderHtml(folderName, eventDescription, callback){
+  console.log('------------------');
+  console.log('Step 3: get images');
+  console.log('------------------');
+	listPhotos(bucket, folderName, false, false, false,  function(err, ret) {
+    var images = [];
+		if (err) {
+     console.error('[ERROR]', err);
+    }else{
+      console.log('ret', ret);
+      ret.items.forEach(function(img){
+        images.push(covertImageInfo(img.key, img.hash, img.mimType, img.putTime));
+      });
+      eventDescription.photos = images;
+    }
+    console.log(eventDescription);
+    callback(null, eventDescription);
+	});
+}
+
+function renderToHtml(res, eventDescription, callback){
+  console.log('----------------------');
+  console.log('Step 4: render to html');
+  console.log('----------------------');
+  res.render('event', eventDescription); 
+  callback(null, {});
+}
