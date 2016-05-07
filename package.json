@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/2remote/corporate-event-server#readme",
   "dependencies": {
+    "array-sort": "^0.1.2",
     "async": "^2.0.0-rc.4",
     "avoscloud-sdk": "^0.6.10",
     "ejs": "^2.4.1",

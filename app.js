@@ -7,7 +7,7 @@ var fs = require('fs');
 var conf = require('./cfg');
 var qiniu = require('qiniu');
 var AV = require('avoscloud-sdk');
-var async = require('async');
+var arraySort = require('array-sort');
 
 var app = express();
 app.set('views', __dirname + '/views');
@@ -53,14 +53,15 @@ console.log('Server running at http://127.0.0.1:%s.', port);
 
 function covertImageInfo(key, hash, mimType, putTime){
   var org = corporatePreLink + key;
-  var bigImage = org + '-' + key.split('/')[0] + 'm';
-  var thumbnail = org + '-' + key.split('/')[0] + 's';
+  var bigImage = org + '-m';
+  var thumbnail = org + '-s';
   var title = key.split('/')[1];
   return {
     bigImage: bigImage,
     title: title,
     thumbnail: thumbnail,
     alt: key,
+    putTime: putTime,
   };
 }
 
@@ -125,6 +126,7 @@ function getImageAndRenderHtml(folderName, eventDescription, callback){
       ret.items.forEach(function(img){
         images.push(covertImageInfo(img.key, img.hash, img.mimType, img.putTime));
       });
+      arraySort(images, 'putTime', {reverse: true});
       eventDescription.photos = images;
     }
     console.log(eventDescription);
