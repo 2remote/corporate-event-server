@@ -7,16 +7,6 @@
   <title>
     <%= title %>
   </title>
-
-  <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?22b6b1b5d65b126d38e09742b734eba6";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
   <style>
     body {
       font-family: "PingFang SC", "Microsoft Yahei", Arial, sans-serif;
@@ -190,6 +180,15 @@
     document.getElementById('closeFooter').onclick = function() {
       document.getElementById('footer').style.display = 'none';
     }
+
+    //统计代码
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?22b6b1b5d65b126d38e09742b734eba6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
   </script>
 
   <script src="/js/vendor/jquery.js"></script>
