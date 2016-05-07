@@ -23,7 +23,7 @@ AV.initialize(conf('LEANCLOUD_APP_ID'), conf('LEANCLOUD_APP_KEY'));
 var defaultEventDescription= {
   folderName: 'default',
   title: '北京邀拍企业活动页',
-}; 
+};
 
 var client = new qiniu.rs.Client();
 var listPhotos= qiniu.rsf.listPrefix;
@@ -53,8 +53,8 @@ console.log('Server running at http://127.0.0.1:%s.', port);
 
 function covertImageInfo(key, hash, mimType, putTime){
   var org = corporatePreLink + key;
-  var bigImage = org + '?imageMogr2/thumbnail/1024x';
-  var thumbnail = org + '?imageMogr2/thumbnail/300x';
+  var bigImage = org + '-' + key + '?imageMogr2/thumbnail/1024x';
+  var thumbnail = org + '-' + key + '?imageMogr2/thumbnail/300x';
   var title = key.split('/')[1];
   return {
     bigImage: bigImage,
@@ -80,7 +80,7 @@ function loadEventDescriptions(callback){
         console.log('found events');
         results.forEach(function(result){
           if(result._hasData){
-            // update eventDescriptions 
+            // update eventDescriptions
             eventDescriptions.push(result._serverData);
           }
         });
@@ -103,7 +103,7 @@ function getTitleByFolderName(folderName, eventDescriptions, callback){
   eventDescriptions.forEach(function(eventDescription){
     if ( eventDescription.folderName == folderName){
       currentEventDescription = eventDescription;
-    } 
+    }
   });
   if( currentEventDescription ){
     callback(null, currentEventDescription);
@@ -139,6 +139,6 @@ function renderToHtml(res, eventDescription, callback){
   // console.log('  eventDescription.title', eventDescription.title);
   // console.log('  eventDescription.folderName', eventDescription.folderName);
   // console.log('  eventDescription.wxKeyword', eventDescription.wxKeyword);
-  res.render('event', eventDescription); 
+  res.render('event', eventDescription);
   callback(null, {});
 }
