@@ -71,7 +71,7 @@ function loadEventDescriptions(callback){
   // search an event
   var Event = AV.Object.extend('Event');
   var eventQuery= new AV.Query(Event);
-  eventQuery.select('folderName', 'title');
+  eventQuery.select('folderName', 'title', 'wxKeyword');
   var eventDescriptions = [];
 
   eventQuery.find().then(
@@ -136,6 +136,9 @@ function renderToHtml(res, eventDescription, callback){
   console.log('----------------------');
   console.log('Step 4: render to html');
   console.log('----------------------');
+  // console.log('  eventDescription.title', eventDescription.title);
+  // console.log('  eventDescription.folderName', eventDescription.folderName);
+  // console.log('  eventDescription.wxKeyword', eventDescription.wxKeyword);
   res.render('event', eventDescription); 
   callback(null, {});
 }
