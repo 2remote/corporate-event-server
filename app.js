@@ -53,8 +53,8 @@ console.log('Server running at http://127.0.0.1:%s.', port);
 
 function covertImageInfo(key, hash, mimType, putTime){
   var org = corporatePreLink + key;
-  var bigImage = org + '-' + key + '?imageMogr2/thumbnail/1024x';
-  var thumbnail = org + '-' + key + '?imageMogr2/thumbnail/300x';
+  var bigImage = org + '-' + key + 'm';
+  var thumbnail = org + '-' + key + 's';
   var title = key.split('/')[1];
   return {
     bigImage: bigImage,
