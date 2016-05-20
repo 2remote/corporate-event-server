@@ -51,9 +51,9 @@ console.log('Server running at http://127.0.0.1:%s.', port);
 
 // Functions
 
-function covertImageInfo(key, hash, mimType, putTime){
+function covertImageInfo(key, hash, mimType, putTime, folderName){
   var org = corporatePreLink + key;
-  var bigImage = org + '-m';
+  var bigImage = org + '-m' + folderName;
   var thumbnail = org + '-s';
   var title = key.split('/')[1];
   return {
@@ -99,7 +99,7 @@ function getTitleByFolderName(folderName, eventDescriptions, callback){
   console.log('---------------------------------');
   console.log('Step 2: get title from folderName');
   console.log('---------------------------------');
-  console.log('getTitleByFolderName:eventDescriptions', eventDescriptions);
+  // console.log('getTitleByFolderName:eventDescriptions', eventDescriptions);
   var currentEventDescription = false ;
   eventDescriptions.forEach(function(eventDescription){
     if ( eventDescription.folderName == folderName){
@@ -124,12 +124,12 @@ function getImageAndRenderHtml(folderName, eventDescription, callback){
     }else{
       console.log('ret', ret);
       ret.items.forEach(function(img){
-        images.push(covertImageInfo(img.key, img.hash, img.mimType, img.putTime));
+        images.push(covertImageInfo(img.key, img.hash, img.mimType, img.putTime, folderName));
       });
       arraySort(images, 'putTime', {reverse: true});
       eventDescription.photos = images;
     }
-    console.log(eventDescription);
+    // console.log(eventDescription);
     callback(null, eventDescription);
 	});
 }
