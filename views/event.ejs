@@ -28,6 +28,24 @@
       font-size: 8px;
     }*/
 
+    .blueimp-gallery>.close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      height: 45px;
+      width: 45px;
+
+      font-size: 60px;
+      border-radius: 0 0 0 100%;/*分表表示左上角 右上角 右下角 左下角*/
+      opacity:0.5;
+      background:rgba(255,255,255,0.70);
+      color: black;
+      text-shadow: 0 0 0px #fff;
+
+      line-height: 20px;
+      text-align: right;
+    }
+
     #links {
       width: 1000px;
       margin: 0 auto;
@@ -124,7 +142,7 @@
   </footer>
 
   <!-- 加入控制 -->
-  <div id="blueimp-gallery" class="blueimp-gallery">
+  <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
     <div class="slides"></div>
     <h3 class="title"></h3>
     <a class="close">×</a>
