@@ -4,6 +4,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <link rel="stylesheet" href="css/blueimp-gallery.min.css">
+  <link rel="stylesheet" href="css/animate.min.css">
   <title>
     <%= title %>
   </title>
@@ -130,7 +131,6 @@
     <img src="images/yaopai_updated.jpg">
   </div>
   <footer class="footer" id="footer">
-    <div class="x" id="closeFooter">×</div>
     <img class="ewm J_QrCode" src="images/yp_weixin.jpg">
     <span class="text">
       <span class="revserse J_FooterText2">YAOPAI 全球摄影师预约平台</span>
@@ -140,6 +140,24 @@
     <span class="tips">照片经过压缩处理，请放心浏览。</span>
     </span>
   </footer>
+
+  <script src="https://npmcdn.com/headroom.js"></script>
+  <script>
+    // grab an element
+    var myElement = document.querySelector("footer");
+    // construct an instance of Headroom, passing the element
+    var headroom  = new Headroom(myElement, {
+       "tolerance": 5,
+       "offset": 212,
+       "classes": {
+         "initial": "animated",
+         "pinned": "fadeInUp",
+         "unpinned": "fadeOutDown"  
+        }
+    });
+    // initialise
+    headroom.init();
+  </script>
 
   <!-- 加入控制 -->
   <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
@@ -176,10 +194,6 @@
         links = this.getElementsByTagName('a');
       blueimp.Gallery(links, options);
     };
-
-    document.getElementById('closeFooter').onclick = function() {
-      document.getElementById('footer').style.display = 'none';
-    }
 
     //统计代码
     var _hmt = _hmt || [];
