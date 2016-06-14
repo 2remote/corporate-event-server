@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
+    "dev": "node app.js --PORT 3000",
     "test": "grunt test"
   },
   "repository": {
