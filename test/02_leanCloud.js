@@ -5,7 +5,7 @@ var AV = require('avoscloud-sdk');
 var ret = AV.initialize('3mY5tYSIAawgeVjJ9BIrbloU-gzGzoHsz', 'Tq9uT7sbzoByfjNVSfeSCFRc');
 
 
-test('leanCloud test', function(t) {
+test.skip('leanCloud test', function(t) {
   t.ok(AV);
 
   // search an event
