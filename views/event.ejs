@@ -48,14 +48,15 @@
     }
 
     #links {
-      width: 1000px;
-      margin: 0 auto;
-      height: auto;
-      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
     }
 
-    #links a img {
-      width: 20%;
+    #links a {
+      display: inline-block;
+      margin-bottom: 8px;
+      width: calc(50% - 4px);
     }
 
     .footer {
@@ -135,7 +136,7 @@
     </span>
   </footer>
 
-  <script src="https://npmcdn.com/headroom.js"></script>
+  <script src="js/headroom.min.js"></script>
   <script>
     // grab an element
     var myElement = document.querySelector("footer");

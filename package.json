@@ -27,6 +27,7 @@
     "avoscloud-sdk": "^0.6.10",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
+    "headroom.js": "^0.9.3",
     "nconf": "^0.8.4",
     "qiniu": "^6.1.10",
     "request": "^2.71.0",
