@@ -176,7 +176,7 @@
   <!-- 加入内容 -->
   <div id="links">
     <% for(var i=0; i<photos.length; i++) {%>
-      <a href="<%= photos[i].bigImage %>" title="<%= photos[i].title %>">
+      <a href="<%= photos[i].bigImage %>" title="拍摄时间: <%= photos[i].putDate %>">
             <img class="lazy" data-original="<%= photos[i].thumbnail %>" alt="<%= photos[i].alt %>">
         </a>
       <% } %>

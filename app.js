@@ -56,11 +56,13 @@ function covertImageInfo(key, hash, mimType, putTime, folderName){
   var bigImage = org + '-m' + folderName;
   var thumbnail = org + '-s';
   var title = key.split('/')[1];
+  var dateString = common.qiniuDateString(putTime);
   return {
     bigImage: bigImage,
     title: title,
     thumbnail: thumbnail,
     alt: key,
+    putDate: dateString,
     putTime: putTime,
   };
 }
@@ -122,10 +124,11 @@ function getImageAndRenderHtml(folderName, eventDescription, callback){
 		if (err) {
      console.error('[ERROR]', err);
     }else{
-      console.log('ret', ret);
+      console.log('ret\n', ret.items[2]);
       ret.items.forEach(function(img){
         images.push(covertImageInfo(img.key, img.hash, img.mimType, img.putTime, folderName));
       });
+      console.log('coverted image info\n', images[2]);
       arraySort(images, 'putTime', {reverse: true});
       eventDescription.photos = images;
     }
