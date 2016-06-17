@@ -57,13 +57,29 @@ function covertImageInfo(key, hash, mimType, putTime, folderName){
   var thumbnail = org + '-s';
   var title = key.split('/')[1];
 
+  var shotDateString = false ;
+  var shotTimeValue  = false ;
+  var timeFormat = '上传时间';
   var putDateString = common.qiniuDateString(putTime);
-  var shotTimeValue = common.yaopaiPhotoNameHandle(title);
-  var shotDateString = common.qiniuDateFormat(new Date(shotTimeValue));
+  if(common.timeValueCheck(title)){
+    shotTimeValue = common.yaopaiPhotoNameHandle(title);
+    shotDateString = common.qiniuDateFormat(new Date(shotTimeValue));
+  } else {
+    shotTimeValue = false;
+  }
+
+  var outputTitle = "";
+  if(shotDateString){
+    outputTitle = shotDateString;
+    timeFormat = '拍照时间';
+  } else {
+    outputTitle = putDateString;
+  }
 
   return {
     bigImage: bigImage,
-    title: shotDateString,
+    title: outputTitle,
+    timeFormat: timeFormat,
     thumbnail: thumbnail,
     alt: key,
     putDate: putDateString,
