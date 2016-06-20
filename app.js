@@ -83,6 +83,7 @@ function covertImageInfo(key, hash, mimType, putTime, folderName){
     thumbnail: thumbnail,
     alt: key,
     putDate: putDateString,
+    shotTime: shotTimeValue,
     putTime: putTime,
   };
 }
@@ -153,7 +154,7 @@ function getImageAndRenderHtml(folderName, eventDescription, callback){
       console.log('coverted image info\n', images[2]);
       console.log('coverted image info\n', images[402]);
       
-      arraySort(images, 'putTime', {reverse: true});
+      arraySort(images, 'shotTime', {reverse: true});
       eventDescription.photos = images;
     }
     // console.log(eventDescription);
