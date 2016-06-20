@@ -122,7 +122,8 @@ function getTitleByFolderName(folderName, eventDescriptions, callback){
   console.log('---------------------------------');
   console.log('Step 2: get title from folderName');
   console.log('---------------------------------');
-  // console.log('getTitleByFolderName:eventDescriptions', eventDescriptions);
+  console.log('getTitleByFolderName:folderName', folderName);
+  //  console.log('getTitleByFolderName:eventDescriptions', eventDescriptions);
   var currentEventDescription = false ;
   eventDescriptions.forEach(function(eventDescription){
     if ( eventDescription.folderName == folderName){
