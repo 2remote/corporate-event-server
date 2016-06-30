@@ -27,3 +27,4 @@
 - [blueimp/Gallery](https://github.com/blueimp/Gallery#initialization) blueimp Gallery is a touch-enabled, responsive and customizable image & video gallery, carousel and lightbox, optimized for both mobile and desktop web browsers.
 - [Data URI scheme](https://en.wikipedia.org/wiki/Data_URI_scheme) 在HTML引入base64图片的范例
 - [base64-image.de](https://www.base64-image.de) Convert your images to base64
+- [a guide to flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) css flex and order
