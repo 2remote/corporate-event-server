@@ -95,7 +95,7 @@ function loadEventDescriptions(callback){
   // search an event
   var Event = AV.Object.extend('Event');
   var eventQuery= new AV.Query(Event);
-  eventQuery.select('folderName', 'title', 'wxKeyword');
+  eventQuery.select('folderName', 'title', 'wxKeyword', 'shareIcon');
   var eventDescriptions = [];
 
   eventQuery.find().then(
