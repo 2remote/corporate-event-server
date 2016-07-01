@@ -130,6 +130,8 @@ function getTitleByFolderName(folderName, eventDescriptions, callback){
       currentEventDescription = eventDescription;
     }
   });
+  console.log('currentEventDescription:', currentEventDescription); 
+
   if( currentEventDescription ){
     callback(null, currentEventDescription);
   }else{
