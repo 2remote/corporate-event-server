@@ -95,7 +95,7 @@ function loadEventDescriptions(callback){
   // search an event
   var Event = AV.Object.extend('Event');
   var eventQuery= new AV.Query(Event);
-  eventQuery.select('folderName', 'title', 'wxKeyword');
+  eventQuery.select('folderName', 'title', 'wxKeyword', 'shareIcon');
   var eventDescriptions = [];
 
   eventQuery.find().then(
@@ -130,6 +130,8 @@ function getTitleByFolderName(folderName, eventDescriptions, callback){
       currentEventDescription = eventDescription;
     }
   });
+  console.log('currentEventDescription:', currentEventDescription); 
+
   if( currentEventDescription ){
     callback(null, currentEventDescription);
   }else{
