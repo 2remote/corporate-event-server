@@ -1,6 +1,6 @@
 {
   "name": "corporate-event-server",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "description": "YAOPAI企业活动服务器",
   "main": "app.js",
   "scripts": {
