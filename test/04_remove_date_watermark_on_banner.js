@@ -52,7 +52,7 @@ test('banner ignore date and watermark', function(t) {
   var sourceObj = [filenames[0], 'Ft8djAzHxRgwOK6xano0CBklBDp5', 'image/jpeg', 14663939041780276, '2016620test', 'http://foxhome.org/'];
   var targetObj = {
     alt: '2016620test/20201220122020-banner.png',
-    bigImage: 'http://foxhome.org/2016620test/20201220122020-banner.png-m2016620test',
+    bigImage: 'http://foxhome.org/2016620test/20201220122020-banner.png',
     putDate: '6月20日 11:38:24',
     putTime: 14663939041780276,
     shotTime: 1608438020000,
