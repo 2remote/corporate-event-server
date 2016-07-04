@@ -18,14 +18,14 @@ test('found banner inside filename', function(t) {
 });
 
 test('format', function(t) {
-  var sourceObj = [filenames[0], 'Ft8djAzHxRgwOK6xano0CBklBDp5', 'image/jpeg', 14663939041780276, '2016620test'];
+  var sourceObj = ['2016620test/20201220122020-fox.png', 'Ft8djAzHxRgwOK6xano0CBklBDp5', 'image/jpeg', 14663939041780276, '2016620test'];
   var targetObj = {
-    alt: '2016620test/20201220122020-banner.png',
-    bigImage: 'undefined2016620test/20201220122020-banner.png-m2016620test',
+    alt: '2016620test/20201220122020-fox.png',
+    bigImage: 'undefined2016620test/20201220122020-fox.png-m2016620test',
     putDate: '6月20日 11:38:24',
     putTime: 14663939041780276,
     shotTime: 1608438020000,
-    thumbnail: 'undefined2016620test/20201220122020-banner.png-s',
+    thumbnail: 'undefined2016620test/20201220122020-fox.png-s',
     timeFormat: '拍照时间',
     title: '12月20日 12:20:20'
   };
@@ -44,6 +44,23 @@ test('format', function(t) {
     title: '6月20日 11:38:24'
   };
   t.deepEqual(common.covertImageInfo(...sourceObjBad), targetObj, 'show put time when filename contains wrong shot time format');
+
+  t.end();
+});
+
+test('banner ignore date and watermark', function(t) {
+  var sourceObj = [filenames[0], 'Ft8djAzHxRgwOK6xano0CBklBDp5', 'image/jpeg', 14663939041780276, '2016620test', 'http://foxhome.org/'];
+  var targetObj = {
+    alt: '2016620test/20201220122020-banner.png',
+    bigImage: 'http://foxhome.org/2016620test/20201220122020-banner.png-m2016620test',
+    putDate: '6月20日 11:38:24',
+    putTime: 14663939041780276,
+    shotTime: 1608438020000,
+    thumbnail: 'http://foxhome.org/2016620test/20201220122020-banner.png-s',
+    timeFormat: 'Banner',
+    title: 'Image'
+  };
+  t.deepEqual(common.covertImageInfo(...sourceObj), targetObj, 'show shot time when filename contains right shot time format');
 
   t.end();
 });
