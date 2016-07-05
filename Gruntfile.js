@@ -28,6 +28,9 @@ module.exports = function(grunt) {
     }, 
 
     jshint: {
+      options: {
+        esversion: 6
+      },
       debug: [
         'test/**/*.js',
         'Gruntfile.js',

@@ -51,43 +51,6 @@ console.log('Server running at http://127.0.0.1:%s.', port);
 
 // Functions
 
-function covertImageInfo(key, hash, mimType, putTime, folderName){
-  var org = corporatePreLink + key;
-  var bigImage = org + '-m' + folderName;
-  var thumbnail = org + '-s';
-  var title = key.split('/')[1];
-
-  var shotDateString = false ;
-  var shotTimeValue  = false ;
-  var timeFormat = '上传时间';
-  var putDateString = common.qiniuDateString(putTime);
-  if(common.timeValueCheck(title)){
-    shotTimeValue = common.yaopaiPhotoNameHandle(title);
-    shotDateString = common.qiniuDateFormat(new Date(shotTimeValue));
-  } else {
-    shotTimeValue = false;
-  }
-
-  var outputTitle = "";
-  if(shotDateString){
-    outputTitle = shotDateString;
-    timeFormat = '拍照时间';
-  } else {
-    outputTitle = putDateString;
-  }
-
-  return {
-    bigImage: bigImage,
-    title: outputTitle,
-    timeFormat: timeFormat,
-    thumbnail: thumbnail,
-    alt: key,
-    putDate: putDateString,
-    shotTime: shotTimeValue,
-    putTime: putTime,
-  };
-}
-
 function loadEventDescriptions(callback){
   console.log('------------------------------------');
   console.log('Step 1: update folder name and title');
@@ -152,7 +115,7 @@ function getImageAndRenderHtml(folderName, eventDescription, callback){
       console.log('total items ', ret.items.length); 
       console.log('ret\n', ret.items[302]);
       ret.items.forEach(function(img){
-        images.push(covertImageInfo(img.key, img.hash, img.mimType, img.putTime, folderName));
+        images.push(common.covertImageInfo(img.key, img.hash, img.mimType, img.putTime, folderName, corporatePreLink));
       });
       console.log('coverted image info\n', images[2]);
       console.log('coverted image info\n', images[402]);
