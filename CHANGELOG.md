@@ -1,3 +1,17 @@
+<a name="1.5.7"></a>
+## [1.5.7](https://github.com/2remote/corporate-event-server/compare/v1.5.6...v1.5.7) (2016-07-07)
+
+### Features
+
+* 首页列表中的大图显示和描述 
+
+### Bug Fixes
+
+* 描述不换行问题 ([7b103af](https://github.com/2remote/corporate-event-server/commit/7b103af))
+* 重复 ([ce48d69](https://github.com/2remote/corporate-event-server/commit/ce48d69))
+
+
+
 <a name="1.3.4"></a>
 ## [1.3.4](https://github.com/2remote/corporate-event-server/compare/v1.3.3...v1.3.4) (2016-07-01)
 
