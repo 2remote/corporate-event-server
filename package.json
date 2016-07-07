@@ -1,6 +1,6 @@
 {
   "name": "corporate-event-server",
-  "version": "1.3.17",
+  "version": "1.5.7",
   "description": "YAOPAI企业活动服务器",
   "main": "app.js",
   "scripts": {
@@ -40,6 +40,8 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-conventional-changelog": "^6.1.0",
     "grunt-spawn": "^1.1.74",
-    "grunt-tape": "0.0.2"
+    "grunt-tape": "0.0.2",
+    "proxyquire": "^1.7.10",
+    "sinon": "^1.17.4"
   }
 }

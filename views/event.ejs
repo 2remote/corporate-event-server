@@ -66,6 +66,24 @@
       line-height: 0;
     }
 
+    #links a div{
+      display: inline-block;
+      line-height: 1rem;
+      margin: 1rem;
+      font-family:PingFangSC-Regular;
+      font-size:12px;
+      color:#808080;
+      letter-spacing:0px;
+      text-align:left;
+    }
+
+    .fullWidth {
+      display: inline-block;
+      margin-bottom: 0px;
+      width: 100%; 
+      line-height: 0;
+    }
+
     #links a img {
       width: 100%;
     }
@@ -187,8 +205,11 @@
   <!-- 加入内容 -->
   <div id="links">
     <% for(var i=0; i<photos.length; i++) {%>
-      <a href="<%= photos[i].bigImage %>" title="<%= photos[i].timeFormat %>: <%= photos[i].title %>">
-            <img class="lazy" data-original="<%= photos[i].thumbnail %>" alt="<%= photos[i].alt %>">
+      <a href="<%= photos[i].bigImage %>" title="<%= photos[i].timeFormat %>: <%= photos[i].title %> " style="<%= photos[i].fullWidth %>">
+            <img class="lazy " data-original="<%= photos[i].thumbnail %>" alt="<%= photos[i].alt %>">
+            <% if(photos[i].description != ""){ %>
+              <div>▲ <%= photos[i].description %></div>
+            <% } %>
         </a>
       <% } %>
   </div>
