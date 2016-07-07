@@ -18,6 +18,8 @@
 
 ## 使用
 1. 访问活动名称 http://localhost:8080/livepictest4262 会返回所有图片
+1. [测试专用地址-本地](http://localhost:3000/2016620test)
+1. [测试专用地址-远程](http://live.aiyaopai.com/2016620test)
 
 ## 参考
 - [Headroom.js](http://www.bootcss.com/p/headroom.js/) 为页面顶部多留些空间。在不需要页头时将其隐藏。
