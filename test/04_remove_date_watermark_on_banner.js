@@ -22,6 +22,8 @@ test('format', function(t) {
   var targetObj = {
     alt: '2016620test/20201220122020-fox.png',
     bigImage: 'undefined2016620test/20201220122020-fox.png-m2016620test',
+    description: '', 
+    fullWidth: '',
     putDate: '6月20日 11:38:24',
     putTime: 14663939041780276,
     shotTime: 1608438020000,
@@ -36,6 +38,8 @@ test('format', function(t) {
   targetObj = {
     alt: '2016620test/fox-love-all.png',
     bigImage: 'undefined2016620test/fox-love-all.png-m2016620test',
+    description: '', 
+    fullWidth: '',
     putDate: '6月20日 11:38:24',
     putTime: 14663939041780276,
     shotTime: false,
@@ -53,6 +57,8 @@ test('banner ignore date and watermark', function(t) {
   var targetObj = {
     alt: '2016620test/20201220122020-banner.png',
     bigImage: 'http://foxhome.org/2016620test/20201220122020-banner.png',
+    description: '', 
+    fullWidth: '',
     putDate: '6月20日 11:38:24',
     putTime: 14663939041780276,
     shotTime: 1608438020000,

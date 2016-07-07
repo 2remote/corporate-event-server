@@ -39,6 +39,7 @@ app.get('/:event', function(req, res){
   async.waterfall([
     async.apply(loadEventDescriptions),               // ( -- eventDescripts )
     async.apply(getTitleByFolderName,folderName),     // ( folderName, eventDescriptions -- eventDescription )
+    async.apply(getPhotoDescriptions),                // ( eventDescription -- eventDescription.photoDescription ) 
     async.apply(getImageAndRenderHtml, folderName ),  // ( folderName, eventDescription -- 'eventDescription )
     async.apply(renderToHtml, res)                  // ( tempName, eventDescription -- render html )
   ]);
@@ -48,8 +49,29 @@ var port = conf('PORT');
 app.listen(port);
 console.log('Server running at http://127.0.0.1:%s.', port);
 
-
 // Functions
+function getPhotoDescriptions(eventDescription, callback){ // ( eventDescription -- eventDescription.photoDescriptions )
+  // search an event
+  var Photos = AV.Object.extend('Photos');
+  var photoQuery= new AV.Query(Photos);
+  photoQuery.select('photoName', 'photoDescription');
+  var fotoDescs = [];
+  photoQuery.find().then(function(results){
+    if (results.length > 0){
+      results.forEach(function(result){
+        if(result._hasData){
+          fotoDescs.push(result._serverData);
+        }
+      });
+    }else{
+      console.log('server no results');
+    }
+    console.log("fotoDescs");
+    console.log(fotoDescs);
+    eventDescription.photoDescriptions = fotoDescs;
+    callback(null, eventDescription);
+  });
+}
 
 function loadEventDescriptions(callback){
   console.log('------------------------------------');
@@ -106,6 +128,7 @@ function getImageAndRenderHtml(folderName, eventDescription, callback){
   console.log('------------------');
   console.log('Step 3: get images');
   console.log('------------------');
+  console.log(eventDescription);
 	listPhotos(bucket, folderName, false, false, false,  function(err, ret) {
     var images = [];
 		if (err) {
@@ -114,8 +137,28 @@ function getImageAndRenderHtml(folderName, eventDescription, callback){
       console.log('ret\n', ret.items[2]);
       console.log('total items ', ret.items.length); 
       console.log('ret\n', ret.items[302]);
+
+
       ret.items.forEach(function(img){
-        images.push(common.covertImageInfo(img.key, img.hash, img.mimType, img.putTime, folderName, corporatePreLink));
+        
+        function filterByFilename(obj){
+          var fileName = img.key; 
+          console.log(img.key, obj.photoName);
+          if('photoName' in obj && obj.photoName == fileName){
+            return true;
+          }else{
+            return false;
+          }
+        }
+
+
+        images.push(
+          common.covertImageInfo(
+            img.key, img.hash, img.mimType, 
+            img.putTime, folderName, corporatePreLink, 
+            eventDescription.photoDescriptions.filter(filterByFilename)
+          )
+        );
       });
       console.log('coverted image info\n', images[2]);
       console.log('coverted image info\n', images[402]);
