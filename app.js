@@ -39,7 +39,7 @@ app.get('/:event', function(req, res){
   async.waterfall([
     async.apply(loadEventDescriptions),               // ( -- eventDescripts )
     async.apply(getTitleByFolderName,folderName),     // ( folderName, eventDescriptions -- eventDescription )
-    async.apply(getPhotoDescriptions),                // ( eventDescription -- eventDescription.photoDescription ) 
+    async.apply(getPhotoDescriptions),                // ( eventDescription -- eventDescription.photoDescription )
     async.apply(getImageAndRenderHtml, folderName ),  // ( folderName, eventDescription -- 'eventDescription )
     async.apply(renderToHtml, res)                  // ( tempName, eventDescription -- render html )
   ]);
@@ -115,7 +115,7 @@ function getTitleByFolderName(folderName, eventDescriptions, callback){
       currentEventDescription = eventDescription;
     }
   });
-  console.log('currentEventDescription:', currentEventDescription); 
+  console.log('currentEventDescription:', currentEventDescription);
 
   if( currentEventDescription ){
     callback(null, currentEventDescription);
@@ -135,14 +135,14 @@ function getImageAndRenderHtml(folderName, eventDescription, callback){
      console.error('[ERROR]', err);
     }else{
       console.log('ret\n', ret.items[2]);
-      console.log('total items ', ret.items.length); 
+      console.log('total items ', ret.items.length);
       console.log('ret\n', ret.items[302]);
 
 
       ret.items.forEach(function(img){
-        
+
         function filterByFilename(obj){
-          var fileName = img.key; 
+          var fileName = img.key;
           console.log(img.key, obj.photoName);
           if('photoName' in obj && obj.photoName == fileName){
             return true;
@@ -154,17 +154,17 @@ function getImageAndRenderHtml(folderName, eventDescription, callback){
 
         images.push(
           common.covertImageInfo(
-            img.key, img.hash, img.mimType, 
-            img.putTime, folderName, corporatePreLink, 
+            img.key, img.hash, img.mimType,
+            img.putTime, folderName, corporatePreLink,
             eventDescription.photoDescriptions.filter(filterByFilename)
           )
         );
       });
       console.log('coverted image info\n', images[2]);
       console.log('coverted image info\n', images[402]);
-      
+
       arraySort(images, 'shotTime', {reverse: true});
-      eventDescription.photos = images;
+      eventDescription.photos = common.sortBigImages(images);
     }
     // console.log(eventDescription);
     callback(null, eventDescription);
