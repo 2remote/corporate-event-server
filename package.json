@@ -4,8 +4,8 @@
   "description": "YAOPAI企业活动服务器",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "node app.js --PORT 3000",
+    "start": "node --harmony app.js",
+    "dev": "node --harmony app.js --PORT 3000",
     "test": "grunt test"
   },
   "repository": {
