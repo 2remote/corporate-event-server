@@ -105,21 +105,25 @@
     }
 
     .footer {
-      height: 80px;
+      height: 20px;
       width: 100%;
-      background-color: #FFF;
+      background-color: #000;
       border: 1px;
       position: fixed;
       bottom: 0;
       left: 0;
       color: #000;
-      opacity: 0.8;
-      padding: 5px;
-      font-weight: bold;
+      opacity: 0.9;
+      padding: 20px 0px;
       font-size: 14px;
 
       -webkit-animation-duration: 0.3s;
       -webkit-animation-delay: 0.0s;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .footer .x {
@@ -160,6 +164,69 @@
       font-size: 16px;
     }
 
+    .footer .btn{
+      background: #f70;
+      color: #fff;
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 3px;
+      border: 0;
+      text-decoration: none;
+    }
+
+    .footer .f-des{
+      padding: 0 10px;
+    }
+
+    .footer .f-des .ftitle{
+      font-size: 14px;
+      color: #fff;
+      text-align: center;
+      line-height: 14px;
+      font-weight: 400;
+    }
+
+    .footer .f-des .des{
+      font-size: 10px;
+      color: #fff;
+      text-align: center;
+      line-height: 0px;
+      font-weight: 200;
+    }
+
+    .header {
+      background: rgba(0,0,0,.8);
+      height: 60px;
+      text-align: center;
+      color: #fff;
+      position: fixed;
+      box-sizing:border-box;
+      width: 100%;
+      top: 0;
+      left: 0;
+
+      -webkit-animation-duration: 0.3s;
+      -webkit-animation-delay: 0.0s;
+    }
+
+    .header h1{
+      font-size: 18px;
+      height:60px;
+      line-height: 60px;
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .header span{
+      font-size: 9px;
+      float: right;
+      height:10px;
+      line-height:10px;
+      margin: -10px 10px 10px 0;
+      font-weight: 200;
+    }
+
+
     .tips {
       font-size: 12px;
     }
@@ -167,18 +234,21 @@
 </head>
 
 <body>
+  
   <div style="width:0px; height:0px; overflow:hidden">
     <img src="<%= shareIcon %>">
   </div>
+  <header class="header" id="header">
+    <h1><%= title %></h1>
+    <span>Powered By YAOPAI</span>
+  </header>
   <footer class="footer" id="footer">
-    <img class="ewm J_QrCode" src="images/yp_weixin.jpg">
-    <span class="text">
-      <span class="revserse J_FooterText2">YAOPAI 全球摄影师预约平台</span>
-    <br>
-    <span class="J_FooterText">回复"<%= wxKeyword %>"，立即查看照片。</span>
-    <br>
-    <span class="tips">照片经过压缩处理，请放心浏览。</span>
-    </span>
+    <a class="btn" href="http://u.liveapp.cn/1140781?sf=95D7D695-7799-97AB-03E1-102D9DE5AA9F&from=groupmessage&isappinstalled=0">了解我们</a>
+    <div class="f-des">
+      <h1 class="ftitle">现场照片一秒直达</h1>
+      <p class="des">照片经过压缩处理，请放心浏览下载</p>
+    </div>
+    <a class="btn" href="https://www.wenjuan.com/s/rqEbQjt/">立即预约</a>
   </footer>
 
   <script src="js/headroom.min.js"></script>
@@ -197,6 +267,21 @@
     });
     // initialise
     headroom.init();
+
+    // grab an element
+    var myElements = document.querySelector("header");
+    // construct an instance of Headroom, passing the element
+    var headrooms  = new Headroom(myElements, {
+       "tolerance": 5,
+       "offset": 212,
+       "classes": {
+         "initial": "animated",
+         "pinned": "slideInDown",
+         "unpinned": "slideOutUp" 
+        }
+    });
+    // initialise
+    headrooms.init();
   </script>
 
   <!-- 加入控制 -->
