@@ -13,10 +13,12 @@
   <div style="width:0px; height:0px; overflow:hidden">
     <img src="<%= shareIcon %>">
   </div>
+
   <header class="header" id="header">
     <h1><%= title %></h1>
     <span>Powered By YAOPAI</span>
   </header>
+
   <footer class="footer" id="footer">
     <a class="btn" href="http://u.liveapp.cn/1140781?sf=95D7D695-7799-97AB-03E1-102D9DE5AA9F&from=groupmessage&isappinstalled=0">了解我们</a>
     <div class="f-des">
@@ -39,12 +41,12 @@
   <div id="links">
     <% for(var i=0; i<photos.length; i++) {%>
       <a href="<%= photos[i].bigImage %>" title="<%= photos[i].timeFormat %>: <%= photos[i].title %> " style="<%= photos[i].fullWidth %>">
-            <img class="lazy " data-original="<%= photos[i].thumbnail %>" alt="<%= photos[i].alt %>">
-            <% if(photos[i].description != ""){ %>
-              <div>▲ <%= photos[i].description %></div>
-            <% } %>
-        </a>
-      <% } %>
+        <img class="lazy " data-original="<%= photos[i].thumbnail %>" alt="<%= photos[i].alt %>">
+        <% if(photos[i].description != ""){ %>
+          <div>▲ <%= photos[i].description %></div>
+        <% } %>
+      </a>
+    <% } %>
   </div>
 
   <script src="js/vendor/jquery.js"></script>
