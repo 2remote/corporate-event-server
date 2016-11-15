@@ -13,6 +13,7 @@ $(function() {
   });
   // initialise
   headroom.init();
+// ==============================================
 
  // 加入每个内容的点击响应
   document.getElementById('links').onclick = function(event) {
@@ -38,5 +39,7 @@ $(function() {
     s.parentNode.insertBefore(hm, s);
   })();
 
+// ==============================================
+  // 启动 img lazyload
   $("img.lazy").lazyload();
 })
