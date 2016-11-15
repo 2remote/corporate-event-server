@@ -14,7 +14,7 @@ $(function() {
   // initialise
   headroom.init();
 
-<!-- 加入每个内容的点击响应 -->
+ // 加入每个内容的点击响应
   document.getElementById('links').onclick = function(event) {
     event = event || window.event;
     var target = event.target || event.srcElement,
@@ -29,7 +29,7 @@ $(function() {
     blueimp.Gallery(links, options);
   };
 
-  //统计代码
+  //百度统计代码
   var _hmt = _hmt || [];
   (function() {
     var hm = document.createElement("script");
@@ -38,7 +38,5 @@ $(function() {
     s.parentNode.insertBefore(hm, s);
   })();
 
-  $(function() {
-    $("img.lazy").lazyload();
-  });
+  $("img.lazy").lazyload();
 })
