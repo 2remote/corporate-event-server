@@ -1,6 +1,6 @@
 $(function() {
   // grab an element
-  var myElement = document.querySelector("footer");
+  var myElement = document.querySelector("#footer");
   // construct an instance of Headroom, passing the element
   var headroom  = new Headroom(myElement, {
      "tolerance": 5,
@@ -29,6 +29,13 @@ $(function() {
       links = this.getElementsByTagName('a');
     blueimp.Gallery(links, options);
   };
+
+  // 关闭低栏按钮点击事件
+  $("#close_footer").click(function(e) {
+    e.stopPropagation()
+    $('#footer').hide()
+    return false
+  })
 
   //百度统计代码
   var _hmt = _hmt || [];

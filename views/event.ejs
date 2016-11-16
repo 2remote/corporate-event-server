@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <link rel="stylesheet" href="css/lib/blueimp-gallery.min.css">
   <link rel="stylesheet" href="css/lib/animate.min.css">
-  <link rel="stylesheet" href="css/style.css">><!-- 基本样式都在这里 -->
+  <link rel="stylesheet" href="css/style.css"><!-- 基本样式都在这里 -->
   <title> <%= title %> </title>
 </head>
 
 <body>
   <div style="width:0px; height:0px; overflow:hidden">
-    <img src="<%= shareIcon %>">
+    <img src="<%= shareIcon %>" />
   </div>
 
   <header class="header" id="header">
@@ -19,19 +19,21 @@
     <span>Powered By YAOPAI</span>
   </header>
 
-  <footer class="footer" id="footer">
-    <a class="btn" href="http://u.liveapp.cn/1140781?sf=95D7D695-7799-97AB-03E1-102D9DE5AA9F&from=groupmessage&isappinstalled=0">了解我们</a>
+  <a href="https://www.wenjuan.com/s/rqEbQjt/" class="footer" id="footer">
     <div class="f-des">
       <h1 class="ftitle">现场照片1秒直达</h1>
       <p class="des">照片经过压缩处理，请放心浏览下载</p>
     </div>
-    <a class="btn" href="https://www.wenjuan.com/s/rqEbQjt/">立即预约</a>
-  </footer>
+    <span class="btn" href="javascript:void(0)">预约云直播</span>
+    <span class="x" id="close_footer">x</span>
+  </a>
 
   <!-- 加入控制 -->
   <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
     <div class="slides"></div>
     <h3 class="title"></h3>
+    <aside class="msg-top">试试左滑，右滑查看图片</aside>
+    <aside class="msg-bottom">长按可保存图片，右上角可转发朋友圈</aside>
     <a class="close">×</a>
     <!-- <a class="play-pause-text">自动播放</a> -->
     <!-- <ol class="indicator"></ol> -->
@@ -41,7 +43,7 @@
   <div id="links">
     <% for(var i=0; i<photos.length; i++) {%>
       <a href="<%= photos[i].bigImage %>" title="<%= photos[i].timeFormat %>: <%= photos[i].title %> " style="<%= photos[i].fullWidth %>">
-        <img class="lazy " data-original="<%= photos[i].thumbnail %>" alt="<%= photos[i].alt %>">
+        <img class="lazy " data-original="<%= photos[i].thumbnail %>" alt="<%= photos[i].alt %>" />
         <% if(photos[i].description != ""){ %>
           <div>▲ <%= photos[i].description %></div>
         <% } %>

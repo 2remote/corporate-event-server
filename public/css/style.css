@@ -1,14 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
+  width: 100%;
+  padding-top: 60px;
   font-family: "PingFang SC", "Microsoft Yahei", Arial, sans-serif;
   background: #222;
   color: #fff;
   overflow-x: hidden;
-}
-
-html, body {
-  width: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 #blueimp-gallery .play-pause {
@@ -41,6 +42,18 @@ html, body {
 
   line-height: 20px;
   text-align: right;
+}
+
+.blueimp-gallery .msg-top {
+  position: absolute;
+  left: 20px;
+  top: 20%;
+}
+
+.blueimp-gallery .msg-bottom {
+  position: absolute;
+  left: 20px;
+  bottom: 20%;
 }
 
 #links {
@@ -93,18 +106,19 @@ html, body {
   text-align:center !important;
 }
 
+
+/* ============    footer   ========  */
 .footer {
-  height: 20px;
+  height: 60px;
   width: 100%;
   background-color: #000;
-  border: 1px;
   position: fixed;
   bottom: 0;
   left: 0;
   color: #000;
-  opacity: 0.9;
-  padding: 20px 0px;
+  opacity: 0.8;
   font-size: 14px;
+  text-decoration: none;
 
   -webkit-animation-duration: 0.3s;
   -webkit-animation-delay: 0.0s;
@@ -116,51 +130,27 @@ html, body {
 }
 
 .footer .x {
-  right: 45px;
-  margin: -15px;
-  font-size: 30px;
-  text-decoration: none;
-  cursor: pointer;
+  width: 30px;
+  text-align: center;
   position: absolute;
-  margin: 0 0px 0 0;
+  top: 0px;
+  right: 5px;
+  z-index: 1000;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
   font-size: 20px;
   line-height: 30px;
-  color: #fff;
-  text-shadow: 0 0 2px #000;
-  opacity: 0.8;
-  color: #000;
-  top: 0px;
-  z-index: 1000;
 }
 
-.footer .ewm {
-  height: 80px;
-  display: inline-block;
-  position: absolute;
-  border: 0;
-  vertical-align: middle;
-}
-
-.footer .text {
-  display: inline-block;
-  margin-left: 84px;
-  margin-top: 8px;
-}
-
-.footer .revserse {
-  background-color: #000;
-  color: #FFF;
-  font-size: 16px;
-}
-
-.footer .btn{
+.footer .btn {
   background: #f70;
   color: #fff;
   font-size: 12px;
   padding: 5px 10px;
+  margin-right: 40px;
   border-radius: 3px;
   border: 0;
-  text-decoration: none;
 }
 
 .footer .f-des{
@@ -176,14 +166,19 @@ html, body {
 }
 
 .footer .f-des .des{
-  font-size: 10px;
+  font-size: 12px;
   color: #fff;
   text-align: center;
-  line-height: 0px;
   font-weight: 200;
 }
+/* ============    footer   ========  */
 
+
+/* ============    header   ========  */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
   background: rgba(0,0,0,.8);
   height: 60px;
   text-align: center;
@@ -214,6 +209,7 @@ html, body {
   margin: -10px 10px 10px 0;
   font-weight: 200;
 }
+/* ============    header   ========  */
 
 
 .tips {
