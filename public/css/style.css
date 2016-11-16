@@ -55,6 +55,7 @@ a {
   width: 200px;
   left: 50%;
   margin-left: -100px;
+  padding: 5px 0;
   color: #eee;
   background: rgba(125, 125, 125, 0.5);
   border-radius: 10px;
@@ -68,6 +69,7 @@ a {
   bottom: 80px;
   width: 280px;
   color: #eee;
+  padding: 5px 0;
   background: rgba(125, 125, 125, 0.5);
   border-radius: 10px;
   left: 50%;
