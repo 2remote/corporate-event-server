@@ -12,6 +12,10 @@ body {
   overflow-x: hidden;
 }
 
+a {
+  text-decoration: none;
+}
+
 #blueimp-gallery .play-pause {
   right: 25px;
   bottom: 40px;
@@ -148,9 +152,18 @@ body {
   color: #fff;
   font-size: 12px;
   padding: 5px 10px;
-  margin-right: 40px;
+  margin-right: 20px;
   border-radius: 3px;
   border: 0;
+}
+
+.footer .btn-2 {
+  font-size: 12px;
+  position: absolute;
+  top: 30px;
+  left: 57%;
+  color: #f70;
+
 }
 
 .footer .f-des{
