@@ -50,14 +50,20 @@ a {
 
 .blueimp-gallery .msg-top {
   position: absolute;
-  left: 20px;
   top: 20%;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 200;
 }
 
 .blueimp-gallery .msg-bottom {
   position: absolute;
-  left: 20px;
   bottom: 20%;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 200;
 }
 
 #links {
@@ -152,7 +158,6 @@ a {
   color: #fff;
   font-size: 12px;
   padding: 5px 10px;
-  margin-right: 20px;
   border-radius: 3px;
   border: 0;
 }
@@ -164,10 +169,6 @@ a {
   left: 57%;
   color: #f70;
 
-}
-
-.footer .f-des{
-  padding: 0 10px;
 }
 
 .footer .f-des .ftitle{
