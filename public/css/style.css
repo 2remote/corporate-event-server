@@ -243,3 +243,13 @@ a {
 .tips {
   font-size: 12px;
 }
+
+/* ============    loading   ========  */
+#loading {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+}

@@ -1,4 +1,24 @@
 $(function() {
+  // loading =========
+  function loading() {
+    $('#body').hide()
+    $('#loading').click(function() {
+      $(this).hide()
+      $('#body').show()
+    })
+
+    localStorage.loadingNewTimestamp = Date.parse(new Date())
+  }
+
+  var timestampNow = Date.parse(new Date())
+  var timeInterval = timestampNow - (localStorage.loadingNewTimestamp || timestampNow)
+  if(timeInterval/1000 > 259200 || !localStorage.loadingNewTimestamp){
+    loading()
+  } else {
+    $('#loading').hide()
+  }
+
+
   // grab an element
   var myElement = document.querySelector("#footer");
   // construct an instance of Headroom, passing the element
@@ -49,69 +69,4 @@ $(function() {
   // ==============================================
   // 启动 img lazyload
   $("img.lazy").lazyload();
-
-
-  //微信分享标题 ==============================================
-
-  //分享链接的缩略图
-  var imgUrl = 'http://gw.alicdn.com/tps/i3/TB1V1AsFVXXXXcBXVXXpAOt1VXX-186-186.jpg';
-  //分享链接的链接地址
-  var lineLink = 'http://m.taohua.com/market/ebook/game-sishu.php';
-  //分享链接的描述信息
-  var descContent = document.title;
-  //分享链接的标题
-  var shareTitle = document.title;
-  //一般为空 就好
-  var appid = '';
-  //分享给好友
-  function shareFriend() {
-    WeixinJSBridge.invoke('sendAppMessage', {
-      "appid": appid,
-      "img_url": imgUrl,
-      "img_width": "640",
-      "img_height": "640",
-      "link": lineLink,
-      "desc": descContent,
-      "title": shareTitle
-    }, function(res) {
-      _report('send_msg', res.err_msg);
-    })
-  }
-  //分享到朋友圈
-  function shareTimeline() {
-    WeixinJSBridge.invoke('shareTimeline', {
-      "img_url": imgUrl,
-      "img_width": "640",
-      "img_height": "640",
-      "link": lineLink,
-      "desc": descContent,
-      "title": shareTitle
-    }, function(res) {
-      _report('timeline', res.err_msg);
-    });
-  }
-  //分享到腾讯微博
-  function shareWeibo() {
-    WeixinJSBridge.invoke('shareWeibo', {
-      "content": descContent,
-      "url": lineLink,
-    }, function(res) {
-      _report('weibo', res.err_msg);
-    });
-  }
-  // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
-  document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-    // 发送给好友
-    WeixinJSBridge.on('menu:share:appmessage', function(argv) {
-      shareFriend();
-    });
-    // 分享到朋友圈
-    WeixinJSBridge.on('menu:share:timeline', function(argv) {
-      shareTimeline();
-    });
-    // 分享到微博
-    WeixinJSBridge.on('menu:share:weibo', function(argv) {
-      shareWeibo();
-    });
-  }, false);
 })
