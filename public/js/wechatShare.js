@@ -37,6 +37,7 @@ $(function(){
       link: location.href,
       imgUrl: IMG_SRC
     };
+    console.log(shareData)
     $.wechatShare(shareData);
   }
 
