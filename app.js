@@ -55,6 +55,7 @@ function getPhotoDescriptions(eventDescription, callback){ // ( eventDescription
   var Photos = AV.Object.extend('Photos');
   var photoQuery= new AV.Query(Photos);
   photoQuery.select('photoName', 'photoDescription');
+  photoQuery.contains('photoName', eventDescription.folderName);  
   var fotoDescs = [];
   photoQuery.find().then(function(results){
     if (results.length > 0){
