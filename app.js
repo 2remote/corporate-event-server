@@ -66,8 +66,8 @@ function getPhotoDescriptions(eventDescription, callback){ // ( eventDescription
     }else{
       console.log('server no results');
     }
-    console.log("fotoDescs");
-    console.log(fotoDescs);
+    console.log("fotoDescs number:");
+    console.log(fotoDescs.length);
     eventDescription.photoDescriptions = fotoDescs;
     callback(null, eventDescription);
   });
@@ -143,7 +143,7 @@ function getImageAndRenderHtml(folderName, eventDescription, callback){
 
         function filterByFilename(obj){
           var fileName = img.key;
-          console.log(img.key, obj.photoName);
+//          console.log(img.key, obj.photoName);
           if('photoName' in obj && obj.photoName == fileName){
             return true;
           }else{
