@@ -13,6 +13,7 @@ test.skip('leanCloud test', function(t) {
   var eventQuery= new AV.Query(Event);
   
   eventQuery.select('folderName', 'title');
+  eventQuery.limit(500);// 最多返回 500 条结果
   eventQuery.find().then(
     function(results) {
       if(results.length > 0 ){
