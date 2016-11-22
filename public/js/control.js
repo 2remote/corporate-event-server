@@ -37,6 +37,19 @@ $(function() {
     return false
   })
 
+  $("#close").click(function(e) {
+    e.stopPropagation()
+    $('#mask').hide()
+    return false
+  })
+
+  $("#show").click(function(e) {
+    e.stopPropagation()
+    $('#mask').css("display","block")
+    return false
+  })
+
+
   //百度统计代码
   var _hmt = _hmt || [];
   (function() {

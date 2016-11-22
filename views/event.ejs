@@ -18,14 +18,18 @@
     <h1><%= title %></h1>
     <span>Powered By YAOPAI</span>
   </header>
-
+  <div class="mask" id="mask">
+    <img src="/images/code.jpeg" width="200" height="200" alt="">
+    <p>长按关注 YAOPAI</p>
+    <a class="close" id="close">关闭</a>
+  </div>
   <footer class="footer" id="footer">
     <a class="btn" href="http://u.liveapp.cn/1140781?sf=95D7D695-7799-97AB-03E1-102D9DE5AA9F&from=groupmessage&isappinstalled=0">更多服务</a>
     <a class="f-des" href="https://www.wenjuan.com/s/rqEbQjt/">
       <h1 class="ftitle">现场照片一秒直达</h1>
       <p class="des">照片经过压缩处理，请放心浏览下载</p>
     </a>
-    <a class="btn" href="https://www.wenjuan.com/s/rqEbQjt/">预约云直播</a>
+    <a class="btn" id="show">关注YAOPAI</a>
   </footer>
 
   <!-- 加入控制 -->
@@ -50,7 +54,6 @@
       </a>
     <% } %>
   </div>
-
   <script src="js/vendor/jquery.js"></script>
   <script src="js/lib/blueimp-gallery.min.js"></script>
   <script src="js/lib/headroom.min.js"></script>
