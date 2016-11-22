@@ -11,11 +11,12 @@
 
 <body>
   <img id="loading" src="img/loading.png" alt="loading">
+
   <article id="body">
     <div style="width:0px; height:0px; overflow:hidden">
       <img id="share_img_url" src="<%= shareIcon %>" />
     </div>
-      <header class="header" id="header">
+    <header class="header" id="header">
     <h1><%= title %></h1>
     <span>Powered By YAOPAI</span>
   </header>
@@ -44,8 +45,6 @@
       <!-- <a class="play-pause-text">自动播放</a> -->
       <!-- <ol class="indicator"></ol> -->
     </div>
-
-
     <!-- 加入内容 -->
     <div id="links">
       <% for(var i=0; i<photos.length; i++) {%>
