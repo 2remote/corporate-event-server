@@ -20,6 +20,8 @@ a {
   right: 25px;
   bottom: 40px;
 }
+
+
 /*.play-pause-text {
   position: absolute;
   right: 15px;
@@ -36,22 +38,27 @@ a {
   right: 15px;
   height: 45px;
   width: 45px;
-
   font-size: 60px;
-  border-radius: 0 0 0 100%;/*分表表示左上角 右上角 右下角 左下角*/
-  opacity:0.5;
-  background:rgba(255,255,255,0.70);
+  border-radius: 0 0 0 100%;
+  /*分表表示左上角 右上角 右下角 左下角*/
+  opacity: 0.5;
+  background: rgba(255, 255, 255, 0.70);
   color: black;
   text-shadow: 0 0 0px #fff;
-
   line-height: 20px;
   text-align: right;
 }
 
 .blueimp-gallery .msg-top {
   position: absolute;
-  top: 20%;
-  width: 100%;
+  top: 80px;
+  width: 200px;
+  left: 50%;
+  margin-left: -100px;
+  padding: 5px 0;
+  color: #eee;
+  background: rgba(125, 125, 125, 0.5);
+  border-radius: 10px;
   text-align: center;
   font-size: 14px;
   font-weight: 200;
@@ -59,8 +66,14 @@ a {
 
 .blueimp-gallery .msg-bottom {
   position: absolute;
-  bottom: 20%;
-  width: 100%;
+  bottom: 80px;
+  width: 280px;
+  color: #eee;
+  padding: 5px 0;
+  background: rgba(125, 125, 125, 0.5);
+  border-radius: 10px;
+  left: 50%;
+  margin-left: -140px;
   text-align: center;
   font-size: 14px;
   font-weight: 200;
@@ -82,15 +95,15 @@ a {
   line-height: 0;
 }
 
-#links a div{
+#links a div {
   display: inline-block;
   line-height: 1rem;
   margin: 1rem;
-  font-family:PingFangSC-Regular;
-  font-size:12px;
-  color:#808080;
-  letter-spacing:0px;
-  text-align:left;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #808080;
+  letter-spacing: 0px;
+  text-align: left;
 }
 
 .fullWidth {
@@ -109,15 +122,16 @@ a {
 .title {
   left: 24px !important;
   top: 0px !important;
-  font-family:PingFangSC-Regular !important;
-  font-size:14px !important;
-  color:#808080 !important;
-  letter-spacing:0px !important;
-  text-align:center !important;
+  font-family: PingFangSC-Regular !important;
+  font-size: 14px !important;
+  color: #808080 !important;
+  letter-spacing: 0px !important;
+  text-align: center !important;
 }
 
 
 /* ============    footer   ========  */
+
 .footer {
   height: 60px;
   width: 100%;
@@ -129,10 +143,8 @@ a {
   opacity: 0.8;
   font-size: 14px;
   text-decoration: none;
-
   -webkit-animation-duration: 0.3s;
   -webkit-animation-delay: 0.0s;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -168,10 +180,9 @@ a {
   top: 30px;
   left: 57%;
   color: #f70;
-
 }
 
-.footer .f-des .ftitle{
+.footer .f-des .ftitle {
   font-size: 14px;
   color: #fff;
   text-align: center;
@@ -179,37 +190,44 @@ a {
   font-weight: 400;
 }
 
-.footer .f-des .des{
+.footer .f-des .des {
   font-size: 12px;
   color: #fff;
   text-align: center;
   font-weight: 200;
 }
+
+
 /* ============    footer   ========  */
 
 
 /* ============    header   ========  */
+
 .header {
   position: fixed;
   top: 0;
   left: 0;
+<<<<<<< HEAD
   background: rgba(0,0,0,.8);
   height: 65px;
+=======
+  background: rgba(0, 0, 0, .8);
+  height: 60px;
+>>>>>>> master
   text-align: center;
   color: #fff;
   position: fixed;
-  box-sizing:border-box;
+  box-sizing: border-box;
   width: 100%;
   top: 0;
   left: 0;
-
   -webkit-animation-duration: 0.3s;
   -webkit-animation-delay: 0.0s;
 }
 
-.header h1{
+.header h1 {
   font-size: 18px;
-  height:60px;
+  height: 60px;
   line-height: 60px;
   margin: 0;
   font-weight: 400;
@@ -219,21 +237,21 @@ a {
   padding: 0 20px;
 }
 
-.header span{
+.header span {
   font-size: 9px;
   float: right;
-  height:10px;
-  line-height:10px;
+  height: 10px;
+  line-height: 10px;
   margin: -10px 10px 10px 0;
   font-weight: 200;
 }
-/* ============    header   ========  */
 
+
+/* ============    header   ========  */
 
 .tips {
   font-size: 12px;
 }
-
 .mask{
   background: rgba(0,0,0,.8);
   position: fixed;
@@ -269,3 +287,14 @@ a {
     width: 100%;
     left: 0;
 }
+
+/* ============    loading   ========  */
+#loading {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+}
+

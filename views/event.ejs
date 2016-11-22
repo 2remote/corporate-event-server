@@ -10,11 +10,12 @@
 </head>
 
 <body>
-  <div style="width:0px; height:0px; overflow:hidden">
-    <img src="<%= shareIcon %>" />
-  </div>
-
-  <header class="header" id="header">
+  <img id="loading" src="img/loading.png" alt="loading">
+  <article id="body">
+    <div style="width:0px; height:0px; overflow:hidden">
+      <img id="share_img_url" src="<%= shareIcon %>" />
+    </div>
+      <header class="header" id="header">
     <h1><%= title %></h1>
     <span>Powered By YAOPAI</span>
   </header>
@@ -32,32 +33,38 @@
     <a class="btn" id="show">关注YAOPAI</a>
   </footer>
 
-  <!-- 加入控制 -->
-  <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
-    <div class="slides"></div>
-    <h3 class="title"></h3>
-    <aside class="msg-top">试试左滑，右滑查看图片</aside>
-    <aside class="msg-bottom">长按可保存图片，右上角可转发朋友圈</aside>
-    <!-- <a class="close">×</a> -->
-    <!-- <a class="play-pause-text">自动播放</a> -->
-    <!-- <ol class="indicator"></ol> -->
-  </div>
 
-  <!-- 加入内容 -->
-  <div id="links">
-    <% for(var i=0; i<photos.length; i++) {%>
-      <a href="<%= photos[i].bigImage %>" title="<%= photos[i].timeFormat %>: <%= photos[i].title %> " style="<%= photos[i].fullWidth %>">
-        <img class="lazy " data-original="<%= photos[i].thumbnail %>" alt="<%= photos[i].alt %>" />
-        <% if(photos[i].description != ""){ %>
-          <div>▲ <%= photos[i].description %></div>
-        <% } %>
-      </a>
-    <% } %>
-  </div>
+    <!-- 加入控制 -->
+    <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+      <div class="slides"></div>
+      <h3 class="title"></h3>
+      <aside class="msg-top">试试左滑，右滑查看图片</aside>
+      <aside class="msg-bottom">长按可保存图片，右上角可转发朋友圈</aside>
+      <a class="close">×</a>
+      <!-- <a class="play-pause-text">自动播放</a> -->
+      <!-- <ol class="indicator"></ol> -->
+    </div>
+
+
+    <!-- 加入内容 -->
+    <div id="links">
+      <% for(var i=0; i<photos.length; i++) {%>
+        <a href="<%= photos[i].bigImage %>" title="<%= photos[i].timeFormat %>: <%= photos[i].title %> " style="<%= photos[i].fullWidth %>">
+          <img class="lazy " data-original="<%= photos[i].thumbnail %>" alt="<%= photos[i].alt %>" />
+          <% if(photos[i].description != ""){ %>
+            <div>▲ <%= photos[i].description %></div>
+          <% } %>
+        </a>
+      <% } %>
+    </div>
+  </article>
   <script src="js/vendor/jquery.js"></script>
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script src="js/lib/jquery.wechat.share.js"></script>
   <script src="js/lib/blueimp-gallery.min.js"></script>
   <script src="js/lib/headroom.min.js"></script>
   <script src="js/vendor/jquery.lazyload.js"></script>
   <script src="js/control.js"></script><!-- 逻辑控制都在这里 -->
+  <script src="js/wechatShare.js"></script><!-- 微信分享逻辑 -->
 </body>
 </html>

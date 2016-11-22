@@ -1,21 +1,41 @@
 $(function() {
+  // loading =========
+  function loading() {
+    $('#body').hide()
+    $('#loading').click(function() {
+      $(this).hide()
+      $('#body').show()
+    })
+
+    localStorage.loadingNewTimestamp = Date.parse(new Date())
+  }
+
+  var timestampNow = Date.parse(new Date())
+  var timeInterval = timestampNow - (localStorage.loadingNewTimestamp || timestampNow)
+  if(timeInterval/1000 > 259200 || !localStorage.loadingNewTimestamp){
+    loading()
+  } else {
+    $('#loading').hide()
+  }
+
+
   // grab an element
   var myElement = document.querySelector("#footer");
   // construct an instance of Headroom, passing the element
-  var headroom  = new Headroom(myElement, {
-     "tolerance": 5,
-     "offset": 212,
-     "classes": {
-       "initial": "animated",
-       "pinned": "slideInUp",
-       "unpinned": "slideOutDown"
-      }
+  var headroom = new Headroom(myElement, {
+    "tolerance": 5,
+    "offset": 212,
+    "classes": {
+      "initial": "animated",
+      "pinned": "slideInUp",
+      "unpinned": "slideOutDown"
+    }
   });
   // initialise
-  headroom.init();
-// ==============================================
+  // headroom.init();
+  // ==============================================
 
- // 加入每个内容的点击响应
+  // 加入每个内容的点击响应
   document.getElementById('links').onclick = function(event) {
     event = event || window.event;
     var target = event.target || event.srcElement,
@@ -59,7 +79,7 @@ $(function() {
     s.parentNode.insertBefore(hm, s);
   })();
 
-// ==============================================
+  // ==============================================
   // 启动 img lazyload
   $("img.lazy").lazyload();
 })
