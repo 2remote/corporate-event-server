@@ -30,6 +30,9 @@ var listPhotos= qiniu.rsf.listPrefix;
 var corporatePreLink = "http://" + conf('PRE_URL') + "/";
 var bucket = conf('BUCKET');
 
+app.get('/', function(req, res){
+    res.sendfile('index.html');
+});
 // get gallery by event name
 app.get('/:event', function(req, res){
 	var event_name = req.params.event;
