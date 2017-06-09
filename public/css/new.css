@@ -1,0 +1,108 @@
+.lookButton {
+    width: 100%;
+    bottom:20px;
+    position:absolute;
+}
+
+.row-all-center {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.lookButton img {
+    width: 25px;
+    margin: 0 0 0 .08rem;
+    animation: mymove 1s infinite;
+    -webkit-animation: mymove 1s infinite;
+}
+    html,body{
+      -webkit-font-smoothing: antialiased;
+      width:100%;
+      overflow:hidden;
+    }
+    #pre{
+      overflow-x:hidden;
+      color:#333;
+      min-height:100%;
+      position: absolute;
+      width:100%;
+      background:url('../img/background@2x.png') repeat;
+      background-size:contain;
+      top:0;
+      left:0;
+      box-sizing:border-box;
+    }
+    .content-wp{
+      padding:10px 20px 0 20px;
+    }
+    .triggle-icon{
+        width: 25px;
+        margin: 0 0 0 3px;
+        animation: mymove 1s infinite;
+        -webkit-animation: mymove 1s infinite;
+    }
+    .titles{
+      text-align:left;
+      font-size:18px;
+      color:rgba(0,0,0,1);
+      line-height:50px;
+      font-weight:500;
+      padding-left:10px;
+      position: relative;
+    }
+
+    .titles:before{
+      content:'';
+      display:'inline-block';
+      background: #FF9A00;
+      width: 4px;
+      height: 18px;
+      
+      position:absolute;
+      left:0;
+      top:50%;
+      margin-top:-10px;
+    }
+
+    
+
+    .time,.dest{
+      font-size:14px;
+      line-height:25px;
+      color:rgba(0,0,0,.45);
+    }
+
+    .content-wp ul li {
+      list-style:none;
+    }
+    #mask_a{
+      position:fixed;
+      min-height:100%;
+      width:100%;
+      background:rgba(0,0,0,.8);
+      z-index:9999;
+    }
+    .logo{
+      width:80px;
+      height:80px;
+      border-radius:50%;
+      background-size:cover;
+    }
+    @keyframes mymove {
+      0% {
+          -webkit-transform: translateY(0.2rem);
+          transform: translateY(0.2rem);
+          opacity: 1;
+      }
+      100% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+          opacity: 0;
+      }
+    }
