@@ -6,12 +6,53 @@
   <link rel="stylesheet" href="css/lib/blueimp-gallery.min.css">
   <link rel="stylesheet" href="css/lib/animate.min.css">
   <link rel="stylesheet" href="css/style.css"><!-- 基本样式都在这里 -->
+  <link rel="stylesheet" href="css/new.css"><!-- 新添加的样式都在这里 -->
   
   <title> <%= title %> </title>
 </head>
 
 <body>
   <img id="loading" src="img/loading.png" alt="loading">
+  <% if(folderName == '20170610xyh'){%>
+  <div id="pre">
+    <div id="mask_a"  style="text-align:center;display:none">
+      <img width="200px" style="margin-top:100px;" src="https://comp-file.aiyaopai.com/qrcode.png" alt="">
+      <p style="margin-top:20px;color:#fff;">长按二维码查看微博</p>
+
+      <p onclick="show()" style="margin-top:100px;color:#fff;">关闭</p>
+    </div>
+    <img width="100%" src="https://comp-file.aiyaopai.com/caijingbanner.jpg" alt="">
+    <div class="content-wp">
+      <p class="time"><img src="img/time@2x.png" style="width:20px;vertical-align:middle;margin-right:5px;" alt="">2017年6月10日</p>
+      <p class="dest"><img src="img/addcopy 3@2x.png" style="width:20px;vertical-align:middle;margin-right:5px;" alt="">河南财经政法大学图书馆一楼报告厅</p>
+      
+      <h1 class="titles" style="margin-top:10px;">主办方</h1>
+      <ul>
+        <li>
+          <div class="logo" onclick="show()" style="background-image:url('http://oqgadw5s0.bkt.clouddn.com/logo.png'); -webkit-box-shadow: 0px 4px 6px 0px rgba(66, 61, 53, 0.3);"></div>
+        </li>
+      </ul>
+
+      <h1 class="titles" style="margin-top:10px;">活动详情</h1>
+      <p style="font-size:13px; color:rgba(0,0,0,.54)">聚首财大，共叙同窗情/心系母校，同温师生谊。</p>
+
+      <div class="lookButton row-all-center">
+        <p class="lookButton-p" style="font-size:14px;color:rgba(0,0,0,.5)">上滑进入现场</p>
+        <img src="img/up@2x.png" style="width:14px" class="triggle-icon">
+      </div>
+    </div>
+  </div>
+
+<% }%>
+
+
+
+
+
+
+
+
+
 
   <article id="body">
     <div style="width:0px; height:0px; overflow:hidden">
@@ -19,7 +60,7 @@
     </div>
     <header class="header" id="header">
     <h1><%= title %></h1>
-    <span>Powered By YAOPAI</span>
+    <span>Powered By YAOPAI <span id="height"></span></span>
   </header>
   <div class="mask" id="mask">
     <img src="/images/code.jpeg" width="200" height="200" alt="">
@@ -58,6 +99,13 @@
       <% } %>
     </div>
   </article>
+
+
+
+
+
+
+  
   <script src="js/vendor/jquery.js"></script>
   <!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> -->
   <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
@@ -69,12 +117,24 @@
   <!--<script src="js/wechatShare.js"></script>--><!-- 微信分享逻辑 -->
 
   <script>
+  function show(){
+    if( $('#mask_a').css('display') == 'none'){
+      $('#mask_a').css('display','block')
+    }else{
+      $('#mask_a').css('display','none')
+    }
+    
+  }
+
   $(function(){
 
     var TITLE = document.title
     var IMG_SRC = document.getElementById('share_img_url').src
     var LINK = location.href
 
+    $('#body').css("marginTop",$('#pre').height()-65);
+    $('#header').css('display','none')
+    $('#footer').css('display','none')
     $.ajax({
       url: 'https://wechatauth.aiyaopai.com/auth/jsapisignature',
       type : 'Get',
@@ -127,7 +187,15 @@
       },
     })
   })
-    
+    window.onscroll = function(){
+      if($(document).scrollTop() < $('#pre').height() ){
+        $('#header').css('display','none')
+        $('#footer').css('display','none')
+      }else{
+        $('#header').css('display','block')
+        $('#footer').css('display','flex')
+      }
+    }
   </script>
 </body>
 </html>
